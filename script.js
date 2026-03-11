@@ -102,29 +102,22 @@ if(userIndex===8){
 
 clearInterval(timer)
 
-if(seqNumber===3){
+if(seqNumber === 3){
 
-message.textContent="SUCCESS"
+message.textContent = "SUCCESS - Starting Again"
+
+setTimeout(()=>{
+
+seqNumber = 1
+seqText.textContent = 1
+generateSequence()
+
+},2000)
+
 return
 
 }
 
-seqNumber++
-seqText.textContent=seqNumber
-
-setTimeout(()=>{
-generateSequence()
-},1000)
-
-}
-
-}else{
-
-failGame()
-
-}
-
-})
-
 
 generateSequence()
+
