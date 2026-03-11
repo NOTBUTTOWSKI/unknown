@@ -33,18 +33,32 @@ function startTimer(){
 
 clearInterval(timer)
 
-let time = seqNumber === 1 ? 10 : 5
+let time
+
+// Set time based on sequence
+if(seqNumber === 1){
+    time = 10
+}else if(seqNumber === 2){
+    time = 5
+}else if(seqNumber === 3){
+    time = 3
+}
+
 let total = time
 
-timerBar.style.width="100%"
+timerBar.style.width = "100%"
 
-timer=setInterval(()=>{
+timer = setInterval(()=>{
 
-time-=0.1
+time -= 0.1
 
-timerBar.style.width=(time/total)*100+"%"
+if(time < 0){
+    time = 0
+}
 
-if(time<=0){
+timerBar.style.width = (time/total)*100 + "%"
+
+if(time === 0){
 
 clearInterval(timer)
 failGame()
@@ -54,7 +68,6 @@ failGame()
 },100)
 
 }
-
 function failGame(){
 
 message.textContent="FAILED - Try Again"
@@ -112,5 +125,6 @@ failGame()
 }
 
 })
+
 
 generateSequence()
